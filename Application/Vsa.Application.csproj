@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Settings\Create\" />
+    <Folder Include="Settings\GetById\" />
+    <Folder Include="Settings\Delete\" />
+    <Folder Include="Settings\Update\" />
+    <Folder Include="Users\Create\" />
+    <Folder Include="Users\GetById\" />
+    <Folder Include="Users\Delete\" />
+    <Folder Include="Users\Update\" />
+  </ItemGroup>
+
+</Project>
