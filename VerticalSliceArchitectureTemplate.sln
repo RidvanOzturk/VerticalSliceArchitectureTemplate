@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vsa.Infra", "Infra\Vsa.Infr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vsa.Api", "Api\Vsa.Api.csproj", "{1A7394BF-2379-43C5-BACA-A06C1DED3FE5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B430BF03-D234-4D3D-B8E9-F6C414888352} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{231F3F3A-0EE2-4AE0-A61D-F2DA516043BE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{6F2E3D2A-DCC1-4B38-869C-04DA39FE4D1F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{1A7394BF-2379-43C5-BACA-A06C1DED3FE5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9527463-9493-4F79-97A3-1B96489AF465}
