@@ -11,10 +11,6 @@
     <Folder Include="Settings\GetById\" />
     <Folder Include="Settings\Delete\" />
     <Folder Include="Settings\Update\" />
-    <Folder Include="Users\Create\" />
-    <Folder Include="Users\GetById\" />
-    <Folder Include="Users\Delete\" />
-    <Folder Include="Users\Update\" />
   </ItemGroup>
 
 </Project>
