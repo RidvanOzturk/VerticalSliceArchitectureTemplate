@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Vsa.Domain.Users;
 
-namespace Vsa.Infra.Persistance.Configurations
+namespace Vsa.Infra.Persistance.Configurations;
+public sealed class UserConfiguration : IEntityTypeConfiguration<User>
 {
-    internal class UserConfiguration
+    public void Configure(EntityTypeBuilder<User> b)
     {
+        // boş bırakıldı; isterse max length/unique eklenir
     }
 }

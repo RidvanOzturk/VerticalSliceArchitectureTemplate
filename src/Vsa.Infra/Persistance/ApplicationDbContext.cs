@@ -38,6 +38,7 @@ public class ApplicationDbContext : DbContext
                 Email = "frkn@gmail.com"
             }
             );
+
         modelBuilder.Entity<Setting>()
             .HasData(new Setting
             {

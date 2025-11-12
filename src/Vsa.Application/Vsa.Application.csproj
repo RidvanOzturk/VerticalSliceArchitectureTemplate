@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Settings\Create\" />
-    <Folder Include="Settings\GetById\" />
-    <Folder Include="Settings\Delete\" />
-    <Folder Include="Settings\Update\" />
+    <ProjectReference Include="..\Vsa.Domain\Vsa.Domain.csproj" />
   </ItemGroup>
 
 </Project>
