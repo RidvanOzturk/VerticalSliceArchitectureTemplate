@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FastEndpoints" Version="7.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Vsa.Domain\Vsa.Domain.csproj" />
+    <ProjectReference Include="..\Vsa.Infra\Vsa.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Settings\" />
   </ItemGroup>
 
 </Project>
