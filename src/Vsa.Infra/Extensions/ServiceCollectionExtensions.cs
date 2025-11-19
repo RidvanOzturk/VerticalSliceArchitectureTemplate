@@ -7,13 +7,16 @@ namespace Vsa.Infra.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection RegisterDbContext(this IServiceCollection services, IConfiguration configuration)
+    extension(IServiceCollection services)
     {
-        services.AddDbContext<ApplicationDbContext>(options =>
+        public IServiceCollection RegisterDbContext(IConfiguration configuration)
         {
-            options.UseInMemoryDatabase("VsaDb");
-        });
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseInMemoryDatabase("VsaDb");
+            });
 
-        return services;
+            return services;
+        }
     }
 }

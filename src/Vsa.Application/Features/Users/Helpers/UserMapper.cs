@@ -1,28 +1,26 @@
-﻿using Vsa.Application.Common.Models;
+﻿using FastEndpoints;
 using Vsa.Application.Features.Users.Models;
 using Vsa.Domain.Database;
-using Vsa.Infra.Models.Contracts;
 
 namespace Vsa.Application.Features.Users.Helpers;
 
-public class UserMapper : IStatefulMapper
+public sealed class UserMapper : Mapper<UserRequest, UserResponse, User>
 {
-    public User Map(UserCreationRequest value)
+    public override User ToEntity(UserRequest r) => new()
     {
-        return new User()
-        {
-            Name = value.Name
-        };
-    }
+        Id = r.Id,
+        Name = r.Name,
+        Surname = r.Surname,
+        Email = r.Email,
+        Age = r.Age,
+        Sex = r.Sex
+    };
 
-    public IdResponse MapToIdResponse(User value)
+    public override UserResponse FromEntity(User e) => new()
     {
-        return new IdResponse(value.Id);
-    }
-
-    public UserFetchingResponse MapToFullTypeResponse(User value)
-    {
-        return new UserFetchingResponse(value.Id,
-                                        value.Name);
-    }
+        Name = e.Name,
+        Surname = e.Surname,
+        Age = e.Age,
+        Sex = e.Sex.ToString()
+    };
 }
