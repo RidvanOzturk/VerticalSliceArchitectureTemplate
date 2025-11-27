@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Common\Models\" />
     <Folder Include="Features\Settings\" />
+    <Folder Include="Features\Users\Helpers\" />
   </ItemGroup>
 
 </Project>

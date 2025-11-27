@@ -1,17 +1,17 @@
 ﻿using FastEndpoints;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Vsa.Application.Features.Users.Helpers;
+using Vsa.Application.Features.Users.Mappers;
 using Vsa.Application.Features.Users.Models;
 using Vsa.Infra.Database;
 
 namespace Vsa.Application.Features.Users.Endpoints;
 
-public class GetUser(ApplicationDbContext applicationDbContext) : Endpoint<UserRequest, UserResponse, UserMapper>
+public class GetUser(ApplicationDbContext applicationDbContext) : Endpoint<GetUserRequest, UserResponse>
 {
     public override void Configure()
     {
-        Get("/api/user/{id}");
+        Get("/api/users/{id}");
         Summary(s =>
         {
             s.Summary = "Get user for specified id";
@@ -21,7 +21,7 @@ public class GetUser(ApplicationDbContext applicationDbContext) : Endpoint<UserR
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(UserRequest request, CancellationToken cancellationToken)
+    public override async Task HandleAsync(GetUserRequest request, CancellationToken cancellationToken)
     {
         var user = await applicationDbContext.Users
             .AsNoTracking()
@@ -29,9 +29,9 @@ public class GetUser(ApplicationDbContext applicationDbContext) : Endpoint<UserR
         if (user is null)
         {
             await Send.NotFoundAsync(cancellationToken);
-            return;//must
+            return;
         }
-        var response = Map.FromEntity(user);
+        var response = UserMapper.ToResponse(user);
 
         await Send.OkAsync(response, cancellationToken);
     }

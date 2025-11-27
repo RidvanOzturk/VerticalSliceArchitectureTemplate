@@ -8,7 +8,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection RegisterFastEndpoints(
         this IServiceCollection services)
     {
-        services.AddFastEndpoints(options =>
+        services.AddFastEndpoints(options => 
         {
             options.DisableAutoDiscovery = true;
             options.Assemblies = [typeof(IApplicationAssemblyHook).Assembly];
