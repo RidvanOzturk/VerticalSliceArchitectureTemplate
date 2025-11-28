@@ -7,13 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .RegisterDbContext(builder.Configuration)
-    .RegisterFastEndpoints()
-    .SwaggerDocument();
+    .RegisterFastEndpoints();
 
 var app = builder.Build();
 app.UseApplicationDb();
 app.UseRouting();
-app.UseFastEndpoints();
+app.UseFastEndpoints(c =>
+{
+    c.Endpoints.RoutePrefix = "api";
+});
 app.UseSwaggerGen();
 
 app.Run();

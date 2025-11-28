@@ -1,6 +1,8 @@
 ﻿using Vsa.Domain.Database.Enums;
 
-public  class UpdateUserRequest
+namespace Vsa.Application.Features.Users.Models;
+
+public class UserReadRequest
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;

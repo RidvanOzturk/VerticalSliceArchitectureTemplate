@@ -5,30 +5,30 @@ namespace Vsa.Application.Features.Users.Mappers;
 
 public static class UserMapper
 {
-    public static User ToEntity(CreateUserRequest r) => new()
+    public static User ToEntity(UserInsertRequest request) => new()
     {
-        Name = r.Name,
-        Surname = r.Surname,
-        Email = r.Email,
-        Age = r.Age,
-        Sex = r.Sex
+        Name = request.Name,
+        Surname = request.Surname,
+        Email = request.Email,
+        Age = request.Age,
+        Sex = request.Sex
     };
 
-    public static void UpdateEntity(UpdateUserRequest r, User e)
+    public static void UpdateEntity(UserUpdateRequest request, User user)
     {
-        e.Name = r.Name;
-        e.Surname = r.Surname;
-        e.Email = r.Email;
-        e.Age = r.Age;
-        e.Sex = r.Sex;
+        user.Name = request.Name;
+        user.Surname = request.Surname;
+        user.Email = request.Email;
+        user.Age = request.Age;
+        user.Sex = request.Sex;
     }
 
-    public static UserResponse ToResponse(User e) => new()
+    public static UserReadResponse ToResponse(User user) => new()
     {
-        Id = e.Id,
-        Name = e.Name,
-        Surname = e.Surname,
-        Age = e.Age,
-        Sex = e.Sex.ToString()
+        Id = user.Id,
+        Name = user.Name,
+        Surname = user.Surname,
+        Age = user.Age,
+        Sex = user.Sex.ToString()
     };
 }

@@ -6,12 +6,12 @@ using Vsa.Application.Features.Users.Models;
 using Vsa.Infra.Database;
 
 namespace Vsa.Application.Features.Users.Endpoints;
-
-public class GetUser(ApplicationDbContext applicationDbContext) : Endpoint<GetUserRequest, UserResponse>
+ 
+public class GetUser(ApplicationDbContext applicationDbContext) : Endpoint<UserReadRequest, UserReadResponse>
 {
     public override void Configure()
     {
-        Get("/api/users/{id}");
+        Get("/users/{id}");
         Summary(s =>
         {
             s.Summary = "Get user for specified id";
@@ -21,18 +21,19 @@ public class GetUser(ApplicationDbContext applicationDbContext) : Endpoint<GetUs
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(GetUserRequest request, CancellationToken cancellationToken)
+    public override async Task HandleAsync(UserReadRequest request, CancellationToken cancellationToken)
     {
         var user = await applicationDbContext.Users
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+
         if (user is null)
         {
             await Send.NotFoundAsync(cancellationToken);
             return;
         }
-        var response = UserMapper.ToResponse(user);
 
+        var response = UserMapper.ToResponse(user);
         await Send.OkAsync(response, cancellationToken);
     }
 }

@@ -6,33 +6,33 @@ using Vsa.Infra.Database;
 
 namespace Vsa.Application.Features.Users.Endpoints;
 
-public class CreateUser(ApplicationDbContext applicationDbContext) : Endpoint<CreateUserRequest, UserResponse>
+public class CreateUser(ApplicationDbContext applicationDbContext) : Endpoint<UserInsertRequest, UserInsertResponse>
 {
     public override void Configure()
     {
-        Post("/api/users");
+        Post("/users");
         Summary(s =>
         {
             s.Summary = "Create a new user";
-            s.Response(StatusCodes.Status200OK);
+            s.Response(StatusCodes.Status201Created);
             s.Response(StatusCodes.Status400BadRequest);
         });
         AllowAnonymous();
     }
-    public override async Task HandleAsync(CreateUserRequest request, CancellationToken cancellationToken)
+    public override async Task HandleAsync(UserInsertRequest request, CancellationToken cancellationToken)
     {
-        if (request is null)
-        {
-            await Send.ErrorsAsync(statusCode: 400, cancellationToken);
-            return;
-        }
         var user = UserMapper.ToEntity(request);
-        applicationDbContext.Add(user);
+
+        applicationDbContext.Users.Add(user);
         await applicationDbContext.SaveChangesAsync(cancellationToken);
 
-        var response = UserMapper.ToResponse(user);
-
-        await Send.OkAsync(response, cancellationToken);
-
+        var response = new UserInsertResponse
+        {
+            Id = user.Id
+        };
+        await Send.CreatedAtAsync<GetUser>(
+       routeValues: new { id = user.Id },
+       responseBody: response,
+       cancellation: cancellationToken);
     }
 }

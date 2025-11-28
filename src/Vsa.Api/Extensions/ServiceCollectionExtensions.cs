@@ -1,20 +1,25 @@
 ﻿using FastEndpoints;
+using FastEndpoints.Swagger;
 using Vsa.Application;
 
 namespace Vsa.Api.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection RegisterFastEndpoints(
-        this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        services.AddFastEndpoints(options => 
+        public IServiceCollection RegisterFastEndpoints()
         {
-            options.DisableAutoDiscovery = true;
-            options.Assemblies = [typeof(IApplicationAssemblyHook).Assembly];
-            options.IncludeAbstractValidators = true;
-        });
+            services.AddFastEndpoints(options =>
+            {
+                options.DisableAutoDiscovery = true;
+                options.Assemblies = [typeof(IApplicationAssemblyHook).Assembly];
+                options.IncludeAbstractValidators = true;
+            });
 
-        return services;
+            services.SwaggerDocument();
+
+            return services;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Vsa.Domain.Database.Enums;
 
-public class CreateUserRequest
+public class UserInsertRequest
 {
     public string Name { get; set; } = default!;
     public string Surname { get; set; } = default!;

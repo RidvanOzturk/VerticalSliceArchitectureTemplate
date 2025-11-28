@@ -2,7 +2,7 @@
 
 namespace Vsa.Application.Features.Users.Models;
 
-public class UserResponse
+public class UserReadResponse
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
