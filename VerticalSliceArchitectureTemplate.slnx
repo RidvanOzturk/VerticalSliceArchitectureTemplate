@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Vsa.Api/Vsa.Api.csproj" />
+    <Project Path="src/Vsa.Application/Vsa.Application.csproj" />
+    <Project Path="src/Vsa.Domain/Vsa.Domain.csproj" />
+    <Project Path="src/Vsa.Infra/Vsa.Infra.csproj" />
+  </Folder>
+</Solution>

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Vsa.Domain.Database;
 
 namespace Vsa.Infra.Database.Configurations;
+
 public sealed class SettingConfiguration : IEntityTypeConfiguration<Setting>
 {
     public void Configure(EntityTypeBuilder<Setting> builder)
@@ -18,11 +19,16 @@ public sealed class SettingConfiguration : IEntityTypeConfiguration<Setting>
                .HasMaxLength(200);
 
         builder.HasData(new Setting
-         {
-             Id = 1,
-             Key = "Support.Email",
-             Value = "support@myapp.com"
-         }
-            );
+        {
+            Id = 1,
+            Key = "Support.Email",
+            Value = "support@myapp.com"
+        },
+        new Setting
+        {
+            Id = 2,
+            Key = "theme",
+            Value = "dark"
+        });
     }
 }

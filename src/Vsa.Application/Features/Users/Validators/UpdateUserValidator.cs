@@ -3,26 +3,19 @@ using FluentValidation;
 
 namespace Vsa.Application.Features.Users.Validators;
 
-public class CreateUserValidator : Validator<UserInsertRequest>
+public class UpdateUserValidator : Validator<UserUpdateRequest>
 {
-    public CreateUserValidator()
+    public UpdateUserValidator()
     {
         RuleFor(x => x.Name)
             .NotEmpty()
             .MaximumLength(100);
 
-        RuleFor(x => x.Surname)
-            .MaximumLength(150);
-
         RuleFor(x => x.Email)
-            .NotEmpty()
             .EmailAddress();
 
         RuleFor(x => x.Age)
             .NotNull()
             .GreaterThanOrEqualTo(18);
-
-        RuleFor(x => x.Sex)
-            .IsInEnum();
     }
 }

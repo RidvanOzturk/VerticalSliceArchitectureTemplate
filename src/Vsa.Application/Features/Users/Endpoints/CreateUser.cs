@@ -30,9 +30,10 @@ public class CreateUser(ApplicationDbContext applicationDbContext) : Endpoint<Us
         {
             Id = user.Id
         };
+
         await Send.CreatedAtAsync<GetUser>(
-       routeValues: new { id = user.Id },
-       responseBody: response,
-       cancellation: cancellationToken);
+        routeValues: new { id = user.Id },
+        responseBody: response,
+        cancellation: cancellationToken);
     }
 }

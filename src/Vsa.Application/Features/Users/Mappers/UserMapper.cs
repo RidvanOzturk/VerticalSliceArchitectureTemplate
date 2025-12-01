@@ -27,8 +27,10 @@ public static class UserMapper
     {
         Id = user.Id,
         Name = user.Name,
+        Email = user.Email,
         Surname = user.Surname,
         Age = user.Age,
         Sex = user.Sex.ToString()
     };
+
 }
