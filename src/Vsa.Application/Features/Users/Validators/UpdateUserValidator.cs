@@ -1,9 +1,10 @@
 ﻿using FastEndpoints;
 using FluentValidation;
+using Vsa.Application.Features.Users.Models;
 
 namespace Vsa.Application.Features.Users.Validators;
 
-public class UpdateUserValidator : Validator<UserUpdateRequest>
+public sealed class UpdateUserValidator : Validator<UserUpdateRequest>
 {
     public UpdateUserValidator()
     {

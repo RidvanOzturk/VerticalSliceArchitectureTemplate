@@ -27,6 +27,7 @@ public class UpdateUser(ApplicationDbContext applicationDbContext) : Endpoint<Us
         if (user is null)
         {
             await Send.NotFoundAsync(cancellationToken);
+            return;
         }
 
         UserMapper.UpdateEntity(request, user);

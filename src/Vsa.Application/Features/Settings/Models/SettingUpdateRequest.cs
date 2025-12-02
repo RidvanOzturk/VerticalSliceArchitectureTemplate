@@ -1,6 +1,6 @@
 ﻿namespace Vsa.Application.Features.Settings.Models;
 
-public class SettingReadResponse
+public class SettingUpdateRequest
 {
     public int Id { get; set; }
     public string Key { get; set; } = string.Empty;

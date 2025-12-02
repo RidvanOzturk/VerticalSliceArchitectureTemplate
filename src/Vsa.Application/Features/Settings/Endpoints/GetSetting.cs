@@ -6,7 +6,7 @@ using Vsa.Application.Features.Settings.Mappers;
 using Vsa.Application.Features.Settings.Models;
 using Vsa.Infra.Database;
 
-namespace Vsa.Application.Features.Settings.Enpoints;
+namespace Vsa.Application.Features.Settings.Endpoints;
 
 public class GetSetting(ApplicationDbContext applicationDbContext) : Endpoint<IdRequest, SettingReadResponse>
 {
@@ -24,11 +24,14 @@ public class GetSetting(ApplicationDbContext applicationDbContext) : Endpoint<Id
 
     public override async Task HandleAsync(IdRequest request, CancellationToken cancellationToken)
     {
-        var setting = await applicationDbContext.Settings.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+        var setting = await applicationDbContext.Settings
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
         if (setting is null)
         {
-            await Send.NotFoundAsync();
+            await Send.NotFoundAsync(cancellationToken);
+            return;
         }
         
         var response = SettingMapper.ToResponse(setting);

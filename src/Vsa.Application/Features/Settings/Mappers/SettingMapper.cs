@@ -13,7 +13,14 @@ public static class SettingMapper
 
     public static SettingReadResponse ToResponse(Setting setting) => new()
     {
+        Id = setting.Id,
         Key = setting.Key,
         Value = setting.Value
     };
+
+    public static void UpdateEntity(SettingUpdateRequest request, Setting setting)
+    {
+        setting.Value = request.Value;
+        setting.Key = request.Key;
+    }
 }

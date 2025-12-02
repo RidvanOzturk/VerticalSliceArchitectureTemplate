@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Settings\Validators\" />
     <Folder Include="Features\Users\Helpers\" />
   </ItemGroup>
 

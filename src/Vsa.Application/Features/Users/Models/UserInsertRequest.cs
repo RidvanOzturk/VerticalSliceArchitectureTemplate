@@ -1,5 +1,7 @@
 ﻿using Vsa.Domain.Database.Enums;
 
+namespace Vsa.Application.Features.Users.Models;
+
 public class UserInsertRequest
 {
     public string Name { get; set; } = default!;

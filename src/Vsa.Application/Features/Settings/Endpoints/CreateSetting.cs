@@ -4,7 +4,7 @@ using Vsa.Application.Features.Settings.Mappers;
 using Vsa.Application.Features.Settings.Models;
 using Vsa.Infra.Database;
 
-namespace Vsa.Application.Features.Settings.Enpoints;
+namespace Vsa.Application.Features.Settings.Endpoints;
 
 public class CreateSetting(ApplicationDbContext applicationDbContext) : Endpoint<SettingInsertRequest, SettingInsertResponse>
 {
@@ -15,7 +15,7 @@ public class CreateSetting(ApplicationDbContext applicationDbContext) : Endpoint
         {
             s.Summary = "Create a new setting";
             s.Response(StatusCodes.Status201Created);
-            s.Response(StatusCodes.Status404NotFound);
+            s.Response(StatusCodes.Status400BadRequest);
         });
         AllowAnonymous();
     }

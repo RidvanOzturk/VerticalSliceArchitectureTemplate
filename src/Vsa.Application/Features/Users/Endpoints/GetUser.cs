@@ -31,6 +31,7 @@ public class GetUser(ApplicationDbContext applicationDbContext) : Endpoint<IdReq
         if (user is null)
         {
             await Send.NotFoundAsync(cancellationToken);
+            return;
         }
 
         var response = UserMapper.ToResponse(user);
